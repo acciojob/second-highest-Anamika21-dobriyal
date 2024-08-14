@@ -8,10 +8,35 @@
 
 <body>	
 	<script>
-		function secondHighest(arr) {
+		
 			//Write your code here
 			
-		}
+         function secondHighest(arr) {
+    // If the array is empty or has only one element, return -Infinity
+    if (arr.length < 2) {
+        return -Infinity;
+    }
+
+    // Initialize two variables to hold the highest and second-highest values
+    let first = -Infinity;
+    let second = -Infinity;
+
+    // Loop through the array
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > first) {
+            // If the current element is greater than the highest, update both
+            second = first;
+            first = arr[i];
+        } else if (arr[i] > second && arr[i] < first) {
+            // If the current element is between the highest and second-highest, update second-highest
+            second = arr[i];
+        }
+    }
+
+    // If second remains -Infinity, it means all elements were the same
+    return second === -Infinity ? -Infinity : second;
+}
+
 
 		function Main() {
 			var n = prompt("Enter the number of elements");
